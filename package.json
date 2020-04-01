@@ -1,0 +1,75 @@
+{
+  "name": "react-sgh",
+  "version": "1.0.0",
+  "description": "React mega starter with next.js styled-components typescript storybook atomic-design resolve-import eslint and ... base orbit-component",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "node server.js",
+    "storybook": "start-storybook -p 4000 -c .storybook --ci -s ./public --debug-webpack",
+    "build-storybook": "build-storybook -c .storybook -o .out -s ./public",
+    "deploy-storybook": "storybook-to-ghpages",
+    "test": "jest --passWithNoTests",
+    "eslint": "./node_modules/.bin/eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "./node_modules/.bin/eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
+  },
+  "storybook-deployer": {
+    "gitUsername": "GH Pages Bot",
+    "gitEmail": "hello@ghbot.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinaghadrico/react-sgh.git"
+  },
+  "author": "sina ghadri",
+  "license": "MIT",
+  "dependencies": {
+    "@kiwicom/orbit-design-tokens": "^0.9.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-info": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-viewport": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "axios": "^0.19.2",
+    "babel-preset-react-app": "^9.1.2",
+    "express": "^4.17.1",
+    "next": "^9.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@storybook/storybook-deployer": "^2.8.3",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.8",
+    "@types/react": "^16.9.29",
+    "@types/styled-components": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "babel-jest": "^25.2.4",
+    "babel-plugin-styled-components": "^1.10.7",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "jest": "^25.2.4",
+    "prettier": "^2.0.2",
+    "ts-jest": "^25.3.0",
+    "typescript": "^3.8.3",
+    "typescript-styled-plugin": "^0.15.0"
+  }
+}
