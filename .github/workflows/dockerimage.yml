@@ -12,8 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build the Docker image
+      - name: deploy
         run:
           docker login docker.pkg.github.com -u sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
-          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/react-sgh/master:latest
+          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:latest
           docker push docker.pkg.github.com/sinaghadrico/react-sgh/master
