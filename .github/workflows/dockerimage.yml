@@ -1,20 +1,15 @@
 name: Docker Image CI
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - name: deploy
-
-      run: |
-        docker login docker.pkg.github.com --username sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
-        docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:latest
-        docker push docker.pkg.github.com/sinaghadrico/react-sgh/master
+        run: |
+          docker login docker.pkg.github.com --username sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
+          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:latest
+          docker push docker.pkg.github.com/sinaghadrico/react-sgh/master
