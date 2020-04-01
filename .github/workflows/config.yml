@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Add commit comment
         run: |
-          GITCOMMITNAME=$(git rev-parse --short HEAD)
+          GITCOMMITNAME="15151515"
           DOCKERTAG=$(git describe --tags)
           title="react-sgh auto comment"
           body="on commit $GITCOMMITNAME  storybook: https://react-sgh-$GITCOMMITNAME.surge.sh "
