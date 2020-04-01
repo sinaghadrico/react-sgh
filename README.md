@@ -17,8 +17,8 @@ base on [orbit.kiwi](https://orbit.kiwi)
 
 ## showcase
 
-- [demo](https://react-sgh.straxico.now.sh)
-- [storybook](https://straxico.sinaghadrico.io/react-sgh/)
+- [demo](https://react-sgh.now.sh)
+- [storybook](https://sinaghadrico.github.io/react-sgh/)
 
 ## Installation
 
