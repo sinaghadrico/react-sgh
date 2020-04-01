@@ -17,11 +17,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install fandogh_cli --upgrade
       - name: Lint with flake8
-        env:
-          FONDOGH_USERNAME: ${{secrets.FONDOGH_USERNAME  }}
-          FONDOGH_PASSWORD: ${{secrets.FONDOGH_PASSWORD  }}
         run: |
-          fandogh login --username $FONDOGH_USERNAME --password $FANDOGH_PASSWORD
+          fandogh login --username ${{secrets.FONDOGH_USERNAME  }} --password ${{secrets.FONDOGH_PASSWORD  }}
           fandogh image init --name react-sgh
           fandogh image publish --version latest
 
