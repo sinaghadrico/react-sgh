@@ -30,7 +30,7 @@ jobs:
       - name: Add commit comment
         run: |
           GITCOMMITNAME=$(git rev-parse --short HEAD)
-          DOCKERTAG=$(git describe --tags)
+          DOCKERTAG=$(git describe --always)
           title="react-sgh auto comment"
           body="on commit $GITCOMMITNAME  storybook: https://react-sgh-$GITCOMMITNAME.surge.sh "
           labels='workflow'
