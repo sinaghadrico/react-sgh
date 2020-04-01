@@ -25,7 +25,7 @@ jobs:
           domain: 'https://react-sgh-$(git rev-parse --short HEAD).surge.sh'
           project: '.out'
           login: sina.ghadri.co@gmail.com
-          token: ${{ secrets.SURGE_PASSWORDD }}
+          token: ${{ secrets.SURGE_PASSWORD }}
       - uses: actions/checkout@v2
       - name: Add commit comment
         run: |
