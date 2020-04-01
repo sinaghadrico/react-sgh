@@ -25,11 +25,11 @@ jobs:
           domain: 'https://react-sgh-$(git rev-parse --short HEAD).surge.sh'
           project: '.out'
           login: sina.ghadri.co@gmail.com
-          token: ${{ secrets.SURGE_PASSWORD }}
+          token: ${{ secrets.SURGE_PASSWORDD }}
       - uses: actions/checkout@v2
       - name: Add commit comment
         run: |
-          GITCOMMITNAME="15151515"
+          GITCOMMITNAME=$(git rev-parse --short HEAD)
           DOCKERTAG=$(git describe --tags)
           title="react-sgh auto comment"
           body="on commit $GITCOMMITNAME  storybook: https://react-sgh-$GITCOMMITNAME.surge.sh "
@@ -37,7 +37,7 @@ jobs:
           json=$(jq -nc --arg l "$labels" --arg t "$title" --arg b "$body" '$l | split(", ") | {title: $t, body: $b, labels: .}')
           curl -sL  -X POST -d "$json" \
             -H "Content-Type: application/json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: token ${{ secrets.SURGE_PASSWORD }}" \
             "https://api.github.com/repos/sinaghadrico/react-sgh/commits/$GITHUB_SHA/comments"
       - name: deploy
         run: |

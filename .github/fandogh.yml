@@ -1,0 +1,31 @@
+name: fandogh
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install fandogh
+        run: |
+          python -m pip install --upgrade pip
+          pip install fandogh_cli --upgrade
+      - name: Lint with flake8
+        env:
+          FONDOGH_USERNAME: sina.ghadri.co
+          FONDOGH_PASSWORD: ${{secrets.FONDOGH_PASSWORD  }}
+        run: |
+          fandogh login --username $FONDOGH_USERNAME --password $FANDOGH_PASSWORD
+          fandogh image init --name react-sgh
+          fandogh image publish --version latest
+
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest
