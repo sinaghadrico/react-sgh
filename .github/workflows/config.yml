@@ -26,7 +26,7 @@ jobs:
           project: '.out'
           login: sina.ghadri.co@gmail.com
           token: ${{ secrets.SURGE_PASSWORD }}
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Add commit comment
         run: |
           GITCOMMITNAME=$(git rev-parse --short HEAD)
@@ -39,8 +39,8 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/sinaghadrico/react-sgh/commits/$GITHUB_SHA/comments"
-      - name: deploy image
-      run: |
-      docker login docker.pkg.github.com --username sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
-      docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:latest
-      docker push docker.pkg.github.com/sinaghadrico/react-sgh/master
+      - name: deploy
+        run: |
+          docker login docker.pkg.github.com --username sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
+          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:latest
+          docker push docker.pkg.github.com/sinaghadrico/react-sgh/master

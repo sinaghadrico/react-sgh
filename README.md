@@ -1,6 +1,6 @@
-# react-strix
+# react-sgh
 
-React mega starter
+React starter
 
 - next.js
 - styled-components
