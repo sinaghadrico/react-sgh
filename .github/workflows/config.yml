@@ -42,5 +42,5 @@ jobs:
       - name: deploy
         run: |
           docker login docker.pkg.github.com --username sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
-          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:latest
-          docker push docker.pkg.github.com/sinaghadrico/react-sgh/master
+          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/master:$(git describe --tags)
+          docker push docker.pkg.github.com/sinaghadrico/react-sgh/master:$(git describe --tags)
