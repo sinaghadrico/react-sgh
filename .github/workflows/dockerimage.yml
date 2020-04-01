@@ -2,17 +2,18 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run:
+          docker login docker.pkg.github.com -u sinaghadrico --password ${{ secrets.DOCKER_PASSWORD }}
+          docker build . --file Dockerfile --tag docker.pkg.github.com/sinaghadrico/react-sgh/react-sgh/master:latest
+          docker push docker.pkg.github.com/sinaghadrico/react-sgh/master
